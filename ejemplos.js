@@ -3,7 +3,7 @@
 //let resultado = alert ("Hola" + ESPACIO + nombre);
 //let numero = 5;
 
-//if (numero == //7) {
+//if (numero == 7) {
     //console.log ("El número es igual a 5");
 //} else {
     //console.log ("El número es diferente a 5");
@@ -53,9 +53,44 @@
    // alert("Turno N°" + " " + i +  " " + "Nombre:" + ingresarNombre);
 //}
 
-let entrada = prompt ("Ingrese un dato: ");
+//let entrada = prompt ("Ingrese un dato: ");
 
-while (entrada != "ESC"){
-    alert ("El usuario ingresó: " + entrada);
-    entrada = prompt ("Ingrese otro dato: ");
-}
+//while (entrada != "ESC"){
+   // alert ("El usuario ingresó: " + entrada);
+   // entrada = prompt ("Ingrese otro dato: ");
+//}
+
+//for (let i=20; i<=70; i++){
+  // console.log(i);
+//}
+
+//let numero = 10;
+
+//   while (numero <=30){
+//     document.write (numero + "<br>");
+//     if (numero == 20){
+ //           document.write ( "se rompió la ejecución del bucle");
+ //           break;
+ //        }
+ //     numero ++;
+ //  }
+
+
+//let color = ["rojo", "negro", "azul", "amarillo", "verde"];
+//
+//let seleccion = color[2];
+//
+//console.log(color[0][0]);
+
+//let palabra = "hola" + " " + "como";
+//let palabra2 = "estas";
+//let palabra3 = palabra + " " + palabra2;
+//
+//document.write (palabra3);
+
+//let frase = ["posiciones", "se cuentan", "Las", "array", "cero.", "a partir", "del"]; 
+//
+//let fraseConcatenada = (frase [2] + " " + frase [0] + " " + frase [6] + " " + frase [3] + " " + frase [1] + " " + frase [5] + " " + frase [4]);
+//
+//document.write (fraseConcatenada);
+
