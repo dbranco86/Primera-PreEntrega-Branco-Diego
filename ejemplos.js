@@ -94,3 +94,82 @@
 //
 //document.write (fraseConcatenada);
 
+//let num1 = "8";
+//let num2 = "5";
+//let num3 = "6";
+//
+//let resultado = Number (num1) + Number(num2) + Number (num3);
+//document.write ("el resultado de la suma es: " + resultado);
+
+//SENTENCIA SWITCH
+
+//let color = prompt ("Ingrese un color primario: ");
+
+//switch (color){
+ //  case "rojo":
+ //  alert ("seleccionaste el color Rojo");
+ //  break;
+//}
+
+//EJERCICIO PARA LA PRE ENTREGA
+
+let producto1 = "Empanadas";
+let producto2 = "Hamburguesas";
+let producto3 = "Milanesas";
+let producto4 = "Refresco"
+
+let seleccion = prompt ("Bienvenido a Food Fast \n" + "Seleccione un producto de la lista: \n\n" + producto1 + "\n" + producto2 + "\n" + producto3 + "\n" + producto4);
+let precioProducto;
+let confirmar;
+
+while (seleccion == ""){
+   alert("Debe ingresar un producto");
+   seleccion = prompt ("Seleccione un producto de la lista: \n\n" + producto1 + "\n" + producto2 + "\n" + producto3 + "\n" + producto4);
+}
+
+while ((seleccion != producto1) && (seleccion != producto2) && (seleccion != producto3) && (seleccion != producto4)) {
+   alert("Debe ingresar un producto correcto");
+   seleccion = prompt ("Seleccione un producto de la lista: \n\n" + producto1 + "\n" + producto2 + "\n" + producto3 + "\n" + producto4);
+}
+
+if (seleccion == producto1){
+   precioProducto = 10
+   alert("Usted ha escogido Empanadas");
+}else if (seleccion == producto2){
+   precioProducto = 15
+   alert("Usted ha escogido Hamburguesas");
+}else if (seleccion == producto3){
+   precioProducto = 20
+   alert("Usted ha escogido Milanesas");
+}else if (seleccion == producto4){
+   precioProducto = 5
+   alert("Usted ha escogido Refresco");
+}
+
+let cantidad = Number (prompt ("Ingrese la cantidad: "));
+
+while ((cantidad == "") || (cantidad == 0)){
+   alert("Debe ingresar una cantidad");
+   cantidad = prompt ("Ingrese la cantidad: ");
+}
+
+alert ("Su pedido es: \n\n" + "Cantidad:" + " " + cantidad + "\n" + "Producto:" + " " + seleccion);
+confirmar = prompt("Favor confirme su compra: Si(S) / No(N)");
+
+while ((confirmar != "S") && (confirmar != "N")) {
+   alert("Debe ingresar una opción correcta");
+   confirmar = prompt("Favor confirme su compra: Si(S) / No(N)");
+}
+
+if (confirmar == "S"){
+   let precioTotal = cantidad * precioProducto;
+   document.write ("El total de su compra es: " + precioTotal);
+}else if (confirmar == "N") {
+   seleccion = prompt ("Seleccione un producto de la lista: \n\n" + producto1 + "\n" + producto2 + "\n" + producto3 + "\n" + producto4);
+}
+
+
+
+
+
+
