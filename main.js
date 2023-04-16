@@ -34,7 +34,7 @@ if (seleccion == PRODUCTO_1){
 }else if (seleccion == PRODUCTO_3){
    mensaje();
    precioProducto = 20;
-}else if (seleccion == PRODUCTO_4){
+}else {
    mensaje();
    precioProducto = 5;
 }
