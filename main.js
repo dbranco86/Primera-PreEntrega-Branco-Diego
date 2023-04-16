@@ -6,7 +6,7 @@ const PRODUCTO_3 = "MILANESA";
 const PRODUCTO_4 = "REFRESCO"
 const TIPO_MONEDA = "USD"
 
-alert("Bienvenidos a Fast Food \n" + "LISTA DE INSUMOS Y PRECIOS: \n\n" + PRODUCTO_1 + " " + "10" + TIPO_MONEDA + " " + "\n" + PRODUCTO_2 + " " + "15" + TIPO_MONEDA + " " + "\n" + PRODUCTO_3 + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "5" + TIPO_MONEDA);
+alert("Bienvenido a Fast Food \n" + "LISTA DE INSUMOS Y PRECIOS: \n\n" + PRODUCTO_1 + " " + "10" + TIPO_MONEDA + " " + "\n" + PRODUCTO_2 + " " + "15" + TIPO_MONEDA + " " + "\n" + PRODUCTO_3 + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "5" + TIPO_MONEDA);
 let seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 let precioProducto;
 let confirmar;
@@ -19,7 +19,7 @@ while (seleccion == ""){
    seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 }
 
-while ((seleccion != PRODUCTO_1) && (seleccion != PRODUCTO_2) && (seleccion != PRODUCTO_3) && (seleccion != PRODUCTO_4)) {
+while ((seleccion.toUpperCase() != PRODUCTO_1) && (seleccion.toUpperCase() != PRODUCTO_2) && (seleccion.toUpperCase() != PRODUCTO_3) && (seleccion.toUpperCase() != PRODUCTO_4)) {
    alert("Debe ingresar un producto correcto");
    seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 }
@@ -51,7 +51,7 @@ while ((cantidad == "") || (cantidad == 0)){
    cantidad = prompt ("Ingrese la cantidad: ");
 }
 
-alert ("Su pedido es: \n\n" + "Cantidad:" + " " + cantidad + "\n" + "Producto:" + " " + seleccion);
+alert ("Su pedido es: \n\n" + "Cantidad:" + " " + cantidad + "\n" + "Producto:" + " " + seleccion.toUpperCase());
 confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: S" + "\n" + "Para salir presione: N");
 
 // COMPRUEBA EL INGRESO DE DATOS //
@@ -72,7 +72,7 @@ if (confirmar.toUpperCase() == "S"){
 
 // FUNCIONES //
 function mensaje(){
-   alert ("Usted ha escogido" + " " + seleccion);
+   alert ("Usted ha escogido" + " " + seleccion.toUpperCase());
 }
 
 function precioFinal (cantidad, precioProducto){
