@@ -6,7 +6,7 @@ const PRODUCTO_3 = "MILANESA";
 const PRODUCTO_4 = "REFRESCO"
 const TIPO_MONEDA = "USD"
 
-alert("Bienvenido a Fast Food \n" + "LISTA DE INSUMOS Y PRECIOS: \n\n" + PRODUCTO_1 + " " + "10" + TIPO_MONEDA + " " + "\n" + PRODUCTO_2 + " " + "15" + TIPO_MONEDA + " " + "\n" + PRODUCTO_3 + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "5" + TIPO_MONEDA);
+alert("Bienvenido a Fast Food \n" + "Lista de Insumos y Precios: \n\n" + PRODUCTO_1 + " " + "-" + " " + "10" + TIPO_MONEDA + "\n" + PRODUCTO_2 + " " + "-" + " " + "15" + TIPO_MONEDA + "\n" + PRODUCTO_3 + " " + "-" + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "-" + " " + "5" + TIPO_MONEDA);
 let seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 let precioProducto;
 let confirmar;
@@ -52,19 +52,19 @@ while ((cantidad == "") || (cantidad == 0)){
 }
 
 alert ("Su pedido es: \n\n" + "Cantidad:" + " " + cantidad + "\n" + "Producto:" + " " + seleccion.toUpperCase());
-confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: S" + "\n" + "Para salir presione: N");
+confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: ( S )" + "\n" + "Para salir presione: ( N )");
 
 // COMPRUEBA EL INGRESO DE DATOS //
 while ((confirmar.toUpperCase() != "S") && (confirmar.toUpperCase() != "N")) {
    alert("Debe ingresar una opción correcta");
-   confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: S" + "\n" + "Para salir presione: N");
+   confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: ( S )" + "\n" + "Para salir presione: ( N )");
 }
 
 // CONFIRMAR COMPRA //
 if (confirmar.toUpperCase() == "S"){
    //precioTotal = cantidad * precioProducto;
    precioFinal(cantidad, precioProducto);
-   alert ("Su orden es: \n" + "\n" + "Producto: " + seleccion + "\n" + "Cantidad: " + cantidad + "\n" + "Total a pagar: " + precioTotal + TIPO_MONEDA);
+   alert ("Su orden es: \n" + "\n" + "Producto: " + seleccion.toUpperCase() + "\n" + "Cantidad: " + cantidad + "\n" + "Total a pagar: " + precioTotal + TIPO_MONEDA);
    alert ("Gracias por su compra!");
 }else if (confirmar.toUpperCase() == "N") {
    alert ("Gracias por su visita!");
