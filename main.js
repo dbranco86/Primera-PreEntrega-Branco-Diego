@@ -12,6 +12,7 @@ let seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 
 let precioProducto;
 let confirmar;
 let cantidad;
+let opcion = true;
 
 // COMPRUEBA  EL INGRESO DE DATOS //
 while (seleccion == ""){
@@ -19,9 +20,28 @@ while (seleccion == ""){
    seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 }
 
-while ((seleccion.toUpperCase() != PRODUCTO_1) && (seleccion.toUpperCase() != PRODUCTO_2) && (seleccion.toUpperCase() != PRODUCTO_3) && (seleccion.toUpperCase() != PRODUCTO_4)) {
-   alert("Debe ingresar un producto correcto");
-   seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
+while (opcion){
+   switch (seleccion.toUpperCase()){
+      case PRODUCTO_1:
+         opcion = false;
+         seleccion = PRODUCTO_1;
+         break;
+      case PRODUCTO_2:
+         opcion = false;
+         seleccion = PRODUCTO_2;
+         break;
+      case PRODUCTO_3:
+         opcion = false;
+         seleccion = PRODUCTO_3;
+         break; 
+      case PRODUCTO_4:
+         opcion = false;
+         seleccion = PRODUCTO_4;
+         break;
+      default:
+         alert("Debe ingresar un producto correcto");
+         seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
+   }
 }
 
 // EVALUA LA CONDICION //
