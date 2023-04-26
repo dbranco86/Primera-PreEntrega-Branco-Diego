@@ -7,11 +7,11 @@ const PRODUCTO_4 = "REFRESCO"
 const TIPO_MONEDA = "USD"
 
 alert("Bienvenido a Fast Food \n" + "Lista de Insumos y Precios: \n\n" + PRODUCTO_1 + " " + "-" + " " + "10" + TIPO_MONEDA + "\n" + PRODUCTO_2 + " " + "-" + " " + "15" + TIPO_MONEDA + "\n" + PRODUCTO_3 + " " + "-" + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "-" + " " + "5" + TIPO_MONEDA);
+
 let seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
 let precioProducto;
 let confirmar;
 let cantidad;
-let precioTotal;
 
 // COMPRUEBA  EL INGRESO DE DATOS //
 while (seleccion == ""){
@@ -25,17 +25,17 @@ while ((seleccion.toUpperCase() != PRODUCTO_1) && (seleccion.toUpperCase() != PR
 }
 
 // EVALUA LA CONDICION //
-if (seleccion == PRODUCTO_1){
-   mensaje();
+if (seleccion.toUpperCase() == PRODUCTO_1){
+   mensaje(seleccion.toUpperCase());
    precioProducto = 10;
-}else if (seleccion == PRODUCTO_2){
-   mensaje();
+}else if (seleccion.toUpperCase() == PRODUCTO_2){
+   mensaje(seleccion.toUpperCase());
    precioProducto = 15;
-}else if (seleccion == PRODUCTO_3){
-   mensaje();
+}else if (seleccion.toUpperCase() == PRODUCTO_3){
+   mensaje(seleccion.toUpperCase());
    precioProducto = 20;
 }else {
-   mensaje();
+   mensaje(seleccion.toUpperCase());
    precioProducto = 5;
 }
 
@@ -62,22 +62,22 @@ while ((confirmar.toUpperCase() != "S") && (confirmar.toUpperCase() != "N")) {
 
 // CONFIRMAR COMPRA //
 if (confirmar.toUpperCase() == "S"){
-   //precioTotal = cantidad * precioProducto;
-   precioFinal(cantidad, precioProducto);
-   alert ("Su orden es: \n" + "\n" + "Producto: " + seleccion.toUpperCase() + "\n" + "Cantidad: " + cantidad + "\n" + "Total a pagar: " + precioTotal + TIPO_MONEDA);
+   let resultado = precioFinal(cantidad, precioProducto);
+   alert ("Su orden es: \n" + "\n" + "Producto: " + seleccion.toUpperCase() + "\n" + "Cantidad: " + cantidad + "\n" + "Total a pagar: " + resultado + TIPO_MONEDA);
    alert ("Gracias por su compra!");
 }else if (confirmar.toUpperCase() == "N") {
    alert ("Gracias por su visita!");
 }
 
 // FUNCIONES //
-function mensaje(){
-   alert ("Usted ha escogido" + " " + seleccion.toUpperCase());
+function mensaje(seleccion){
+   alert ("Usted ha escogido" + " " + seleccion);
 }
 
 function precioFinal (cantidad, precioProducto){
-   precioTotal = cantidad * precioProducto;
+   return cantidad * precioProducto;
 }
+
 
 
 
