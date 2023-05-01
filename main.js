@@ -1,103 +1,108 @@
-//EJERCICIO PARA LA PRE ENTREGA
+//CONSTRUCTOR DE OBJETOS
+class Producto {
+    constructor(nombre, precio) {
+        this.nombre  = nombre.toUpperCase();
+        this.precio  = Number (precio);
+    }
+    mensaje(){
+        alert("Seleccione un producto de la lista" + this.nombre +" " + this.precio);
+    }
+}
 
-const PRODUCTO_1 = "EMPANADA";
-const PRODUCTO_2 = "HAMBURGUESA";
-const PRODUCTO_3 = "MILANESA";
-const PRODUCTO_4 = "REFRESCO"
-const TIPO_MONEDA = "USD"
+//CREO OBJETOS
+const PRODUCTO_1 = new Producto ("EMPANADA", "10");
+const PRODUCTO_2 = new Producto ("HAMBURGUESA", "15"); 
+const PRODUCTO_3 = new Producto ("MILANESA", "20");
+const PRODUCTO_4 = new Producto ("REFRESCO", "5");
 
-alert("Bienvenido a Fast Food \n" + "Lista de Insumos y Precios: \n\n" + PRODUCTO_1 + " " + "-" + " " + "10" + TIPO_MONEDA + "\n" + PRODUCTO_2 + " " + "-" + " " + "15" + TIPO_MONEDA + "\n" + PRODUCTO_3 + " " + "-" + " " + "20" + TIPO_MONEDA + " " + "\n" + PRODUCTO_4 + " " + "-" + " " + "5" + TIPO_MONEDA);
+//CREO ARRAY DE PRODUCTOS
+const productos = [
+    PRODUCTO_1,
+    PRODUCTO_2,
+    PRODUCTO_3,
+    PRODUCTO_4
+];
 
-let seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
-let precioProducto;
-let confirmar;
+//CREO ARRAY DE CARRITO
+let carrito = [];
+
+const TIPO_MONEDA = "USD";
+
+let pregunta = prompt("Bienvenido a Fast Food, desea realizar una compra Si(S) No (N)");
 let cantidad;
-let opcion = true;
+let todosLosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + " " + TIPO_MONEDA);
 
-// COMPRUEBA  EL INGRESO DE DATOS //
-while (seleccion == ""){
-   alert("Debe ingresar un producto");
-   seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
+//EVALUANDO DIFERENTES CONDICIONES
+while (pregunta.toUpperCase() != "S" && pregunta.toUpperCase() != "N"){
+    alert("Favor ingrese una respuesta correcta, S / N");
+    pregunta = prompt("Bienvenido a Fast Food, desea realizar una compra Si (S) No (N)");
 }
 
-while (opcion){
-   switch (seleccion.toUpperCase()){
-      case PRODUCTO_1:
-         opcion = false;
-         seleccion = PRODUCTO_1;
-         break;
-      case PRODUCTO_2:
-         opcion = false;
-         seleccion = PRODUCTO_2;
-         break;
-      case PRODUCTO_3:
-         opcion = false;
-         seleccion = PRODUCTO_3;
-         break; 
-      case PRODUCTO_4:
-         opcion = false;
-         seleccion = PRODUCTO_4;
-         break;
-      default:
-         alert("Debe ingresar un producto correcto");
-         seleccion = prompt ("Seleccione un producto de la lista: \n\n" + PRODUCTO_1 + "\n" + PRODUCTO_2 + "\n" + PRODUCTO_3 + "\n" + PRODUCTO_4);
-   }
+if (pregunta.toUpperCase() == "S"){    
+    alert("Bienvenido a Fast Food \n" + "A continuación la lista de productos");
+}else if(pregunta.toUpperCase() == "N"){
+    alert("Gracias por visitarnos, nos vemos en la próxima!");
 }
 
-// EVALUA LA CONDICION //
-if (seleccion.toUpperCase() == PRODUCTO_1){
-   mensaje(seleccion.toUpperCase());
-   precioProducto = 10;
-}else if (seleccion.toUpperCase() == PRODUCTO_2){
-   mensaje(seleccion.toUpperCase());
-   precioProducto = 15;
-}else if (seleccion.toUpperCase() == PRODUCTO_3){
-   mensaje(seleccion.toUpperCase());
-   precioProducto = 20;
-}else {
-   mensaje(seleccion.toUpperCase());
-   precioProducto = 5;
-}
-
-// PIDE LA CANTIDAD //
-do {
-   cantidad = Number (prompt ("Ingrese la cantidad: "));
-}
-while (isNaN (cantidad));
-
-// COMPRUEBA LA CANTIDAD INGRESADA //
-while ((cantidad == "") || (cantidad == 0)){
-   alert("Debe ingresar una cantidad");
-   cantidad = prompt ("Ingrese la cantidad: ");
-}
-
-alert ("Su pedido es: \n\n" + "Cantidad:" + " " + cantidad + "\n" + "Producto:" + " " + seleccion.toUpperCase());
-confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: ( S )" + "\n" + "Para salir presione: ( N )");
-
-// COMPRUEBA EL INGRESO DE DATOS //
-while ((confirmar.toUpperCase() != "S") && (confirmar.toUpperCase() != "N")) {
-   alert("Debe ingresar una opción correcta");
-   confirmar = prompt("Favor confirme su compra:" + "\n\n" + "Para continuar presione: ( S )" + "\n" + "Para salir presione: ( N )");
-}
-
-// CONFIRMAR COMPRA //
-if (confirmar.toUpperCase() == "S"){
-   let resultado = precioFinal(cantidad, precioProducto);
-   alert ("Su orden es: \n" + "\n" + "Producto: " + seleccion.toUpperCase() + "\n" + "Cantidad: " + cantidad + "\n" + "Total a pagar: " + resultado + TIPO_MONEDA);
-   alert ("Gracias por su compra!");
-}else if (confirmar.toUpperCase() == "N") {
-   alert ("Gracias por su visita!");
+while (pregunta.toUpperCase() != "N"){
+    let producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
+    let precio = 0;
+    if (validarProducto(producto)){    
+        switch (producto) {
+            case "EMPANADA":
+                precio = 10;
+                break;
+            case "HAMBURGUESA":
+                precio = 15;
+                break;
+            case "MILANESA":
+                precio = 20;
+                break;
+            case "REFRESCO":
+                precio = 5;
+                break;
+            default:
+                break;
+        }
+        // PIDE LA CANTIDAD //
+        do {
+            cantidad = parseInt (prompt ("Ingrese la cantidad: "));
+            //AGREGO PRODUCTO AL CARRITO
+            carrito.push({
+                producto, 
+                cantidad, 
+                precio
+            });
+        console.log(carrito);
+        }
+        while ((isNaN (cantidad)) || (cantidad == "") || (cantidad == 0));
+    }else {
+        do{
+            alert ("Ingrese un producto correcto");
+            producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
+        }
+        while (validarProducto(producto));       
+    }
+    //EVALUA CONDICION, DE SER NO MUESTRA LO QUE HAY EN EL CARRITO 
+    pregunta = prompt("Desea seguir comprando? (S / N)");
+    while (pregunta.toUpperCase() == "N"){
+        alert("Gracias por su compra.");
+        carrito.forEach((carritoFinal)=>{
+        console.log (`Producto: ${carritoFinal.producto}, Cantidad: ${carritoFinal.cantidad}, Total a pagar por producto: ${carritoFinal.cantidad * carritoFinal.precio}`)
+        });
+    break; 
+    }
 }
 
 // FUNCIONES //
-function mensaje(seleccion){
-   alert ("Usted ha escogido" + " " + seleccion);
+const total = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
+console.log (`El total a pagar por su compra es: ${total}`);
+
+function validarProducto(producto) {
+    const productosValidos = ["EMPANADA", "HAMBURGUESA", "MILANESA", "REFRESCO"];
+    return productosValidos.includes(producto.toUpperCase());
 }
 
-function precioFinal (cantidad, precioProducto){
-   return cantidad * precioProducto;
+function mensaje(producto){
+    alert("Usted ha escogido" + " " + producto);
 }
-
-
-
-
