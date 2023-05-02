@@ -48,22 +48,8 @@ while (pregunta.toUpperCase() != "N"){
     let producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
     let precio = 0;
     if (validarProducto(producto)){    
-        switch (producto) {
-            case "EMPANADA":
-                precio = 10;
-                break;
-            case "HAMBURGUESA":
-                precio = 15;
-                break;
-            case "MILANESA":
-                precio = 20;
-                break;
-            case "REFRESCO":
-                precio = 5;
-                break;
-            default:
-                break;
-        }
+        let productoSeleccionado = productos.find((p) => p.nombre.toUpperCase() === producto.toUpperCase());
+        precio = productoSeleccionado.precio;
         // PIDE LA CANTIDAD //
         do {
             cantidad = parseInt (prompt ("Ingrese la cantidad: "));
@@ -95,8 +81,8 @@ while (pregunta.toUpperCase() != "N"){
 }
 
 // FUNCIONES //
-const total = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
-console.log (`El total a pagar por su compra es: ${total}`);
+const totalCompra = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
+alert (`El total a pagar por su compra es: ${totalCompra}`);
 
 function validarProducto(producto) {
     const productosValidos = ["EMPANADA", "HAMBURGUESA", "MILANESA", "REFRESCO"];
