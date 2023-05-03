@@ -44,7 +44,7 @@ if (pregunta.toUpperCase() == "S"){
 }
 
 while (pregunta.toUpperCase() != "N"){
-    let producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
+    let producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n")).toUpperCase();
     let precio = 0;
     let condicion = true;
     while(condicion){
