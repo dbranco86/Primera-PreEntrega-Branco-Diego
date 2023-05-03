@@ -81,11 +81,13 @@ while (pregunta.toUpperCase() != "N"){
     while (pregunta.toUpperCase() == "N"){
         alert("Gracias por su compra.");
         carrito.forEach((carritoFinal)=>{
-        console.log (`Producto: ${carritoFinal.producto}, Cantidad: ${carritoFinal.cantidad}, Total a pagar por producto: ${carritoFinal.cantidad * carritoFinal.precio}`)
+        console.log (`Producto: ${carritoFinal.producto}, Cantidad: ${carritoFinal.cantidad}, Total a pagar por producto: ${carritoFinal.cantidad * carritoFinal.precio}`)        
         });
     break; 
     }
 }
+let suPedido = carrito.map((producto) => producto.producto + " " + producto.precio * producto.cantidad + " " + TIPO_MONEDA);
+alert("A continuación su pedido: \n\n" + suPedido.join("\n"));
 
 // FUNCIONES //
 function validarProducto(producto) {
@@ -106,6 +108,6 @@ function mensaje(producto){
 }
 
 const totalCompra = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
-alert (`El total a pagar por su compra es: ${totalCompra}`);
-
+alert (`El total a pagar por su compra es: ${totalCompra} ${TIPO_MONEDA}`);
+alert ("Gracias por su vista, lo esperamos pronto!");
 
