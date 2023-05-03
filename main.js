@@ -27,16 +27,15 @@ const productos = [
 let carrito = [];
 
 const TIPO_MONEDA = "USD";
-
-let pregunta = prompt("Bienvenido a Fast Food, desea realizar una compra Si(S) No (N)");
+let pregunta;
 let cantidad;
 let todosLosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + " " + TIPO_MONEDA);
 
 //EVALUANDO DIFERENTES CONDICIONES
-while (pregunta.toUpperCase() != "S" && pregunta.toUpperCase() != "N"){
-    alert("Favor ingrese una respuesta correcta, S / N");
-    pregunta = prompt("Bienvenido a Fast Food, desea realizar una compra Si (S) No (N)");
+do {
+    pregunta = prompt("Bienvenido a Fast Food, desea realizar una compra Si(S) No (N)");
 }
+while (!validarRespuesta(pregunta));
 
 if (pregunta.toUpperCase() == "S"){    
     alert("Bienvenido a Fast Food \n" + "A continuación la lista de productos");
@@ -47,30 +46,37 @@ if (pregunta.toUpperCase() == "S"){
 while (pregunta.toUpperCase() != "N"){
     let producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
     let precio = 0;
-    if (validarProducto(producto)){    
-        let productoSeleccionado = productos.find((p) => p.nombre.toUpperCase() === producto.toUpperCase());
-        precio = productoSeleccionado.precio;
-        // PIDE LA CANTIDAD //
-        do {
-            cantidad = parseInt (prompt ("Ingrese la cantidad: "));
-            //AGREGO PRODUCTO AL CARRITO
-            carrito.push({
-                producto, 
-                cantidad, 
-                precio
-            });
-        console.log(carrito);
+    let condicion = true;
+    while(condicion){
+        if (validarProducto(producto)){    
+            let productoSeleccionado = productos.find((p) => p.nombre.toUpperCase() === producto.toUpperCase());
+            precio = productoSeleccionado.precio;
+            // PIDE LA CANTIDAD //
+            do {
+                cantidad = parseInt (prompt ("Ingrese la cantidad: "));
+                //AGREGO PRODUCTO AL CARRITO
+                if (cantidad > 0) {
+                    // AGREGO PRODUCTO AL CARRITO
+                    carrito.push({
+                        producto, 
+                        cantidad, 
+                        precio
+                    });
+                    condicion = false;
+                }            
+            }
+            while (validarCantidad(cantidad));
+        }else {
+                alert ("Ingrese un producto correcto");
+                producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n")); 
         }
-        while ((isNaN (cantidad)) || (cantidad == "") || (cantidad == 0));
-    }else {
-        do{
-            alert ("Ingrese un producto correcto");
-            producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n"));
-        }
-        while (validarProducto(producto));       
-    }
+    }   
     //EVALUA CONDICION, DE SER NO MUESTRA LO QUE HAY EN EL CARRITO 
-    pregunta = prompt("Desea seguir comprando? (S / N)");
+    do{
+        pregunta = prompt("Desea seguir comprando? (S / N)");
+    }
+    while (!validarRespuesta(pregunta));
+
     while (pregunta.toUpperCase() == "N"){
         alert("Gracias por su compra.");
         carrito.forEach((carritoFinal)=>{
@@ -81,14 +87,24 @@ while (pregunta.toUpperCase() != "N"){
 }
 
 // FUNCIONES //
-const totalCompra = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
-alert (`El total a pagar por su compra es: ${totalCompra}`);
-
 function validarProducto(producto) {
     const productosValidos = ["EMPANADA", "HAMBURGUESA", "MILANESA", "REFRESCO"];
     return productosValidos.includes(producto.toUpperCase());
 }
 
+function validarRespuesta(seleccion) {
+    return seleccion.toUpperCase() === "S" || seleccion.toUpperCase() === "N";
+}
+
+function validarCantidad(seleccion) {
+    return seleccion === isNaN || seleccion <= 0;
+}
+
 function mensaje(producto){
     alert("Usted ha escogido" + " " + producto);
 }
+
+const totalCompra = carrito.reduce((a, b) => a + b.cantidad * b.precio, 0);
+alert (`El total a pagar por su compra es: ${totalCompra}`);
+
+
