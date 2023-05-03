@@ -71,12 +71,13 @@ while (pregunta.toUpperCase() != "N"){
                 producto = prompt ("Seleccione un producto: \n" + "Lista de Insumos y Precios: \n\n" + todosLosProductos.join("\n")); 
         }
     }   
-    //EVALUA CONDICION, DE SER NO MUESTRA LO QUE HAY EN EL CARRITO 
+    //EVALUA CONDICION
     do{
         pregunta = prompt("Desea seguir comprando? (S / N)");
     }
-    while (!validarRespuesta(pregunta));
-
+    while (!validarRespuesta(pregunta));    
+    
+    //MUESTRA LO QUE HAY EN EL CARRITO 
     while (pregunta.toUpperCase() == "N"){
         alert("Gracias por su compra.");
         carrito.forEach((carritoFinal)=>{
@@ -88,7 +89,7 @@ while (pregunta.toUpperCase() != "N"){
 
 // FUNCIONES //
 function validarProducto(producto) {
-    const productosValidos = ["EMPANADA", "HAMBURGUESA", "MILANESA", "REFRESCO"];
+    const productosValidos = [productos[0].nombre, productos[1].nombre, productos[2].nombre, productos[3].nombre];
     return productosValidos.includes(producto.toUpperCase());
 }
 
